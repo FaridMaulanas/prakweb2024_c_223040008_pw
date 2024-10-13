@@ -87,7 +87,7 @@
         ?>
 
         <div class="text-center mt-4">
-            <a href="index.php" class="btn btn-info text-white">Kembali ke Daftar Buku</a>
+            <a href="index.php" class="btn btn-success text-white">Kembali ke Daftar Buku</a>
         </div>
     </div>
 
