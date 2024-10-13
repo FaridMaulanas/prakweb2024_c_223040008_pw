@@ -11,6 +11,8 @@
     <style>
         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            /* Ubah kursor jadi pointer */
         }
 
         .card:hover {
@@ -18,17 +20,13 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Style buat navbar sama footer */
         .navbar {
             background-color: #4CAF50;
-            /* Light Green */
         }
 
         .footer {
-            background-color: #333;
-            /* Light Gray */
+            background-color: #4CAF50;
             color: #F1F1F1;
-            /* Dark Gray for text */
         }
     </style>
 </head>
@@ -37,17 +35,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <!-- Logo Buku pinggir navbar -->
                 <i class="fas fa-book-open"></i> Perpustakaan Lokal
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Form Pencarian Buku di Navbar -->
                 <form action="" method="GET" class="d-flex ms-auto">
                     <input class="form-control me-2" type="search" placeholder="Cari buku..." name="search" aria-label="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
-                    <button class="btn btn-outline-light" type="submit">Cari</button> <!-- Light button -->
+                    <button class="btn btn-outline-light" type="submit">Cari</button>
                 </form>
             </div>
         </div>
@@ -56,19 +52,18 @@
     <div class="container mt-4">
         <h1 class="my-4 text-center">Daftar Buku</h1>
 
-        <!-- Tampilan buku pake card -->
         <div class="row">
             <?php
-            // Query buat cari buku
             $search = isset($_GET['search']) ? $_GET['search'] : '';
             $query = "SELECT * FROM buku WHERE judul LIKE '%$search%' OR penulis LIKE '%$search%'";
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $id = $row['id'];
                     echo "
                     <div class='col-md-4 mb-4'>
-                        <div class='card h-100'>
+                        <div class='card h-100' onclick=\"window.location.href='detail_buku.php?id=$id'\">
                             <div class='card-body'>
                                 <h5 class='card-title'>{$row['judul']}</h5>
                                 <h6 class='card-subtitle mb-2 text-muted'>Penulis: {$row['penulis']}</h6>
