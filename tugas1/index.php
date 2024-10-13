@@ -21,11 +21,11 @@
         }
 
         .navbar {
-            background-color: #4CAF50;
+            background-color: #654321;
         }
 
         .footer {
-            background-color: #4CAF50;
+            background-color: #654321;
             color: #F1F1F1;
         }
     </style>
